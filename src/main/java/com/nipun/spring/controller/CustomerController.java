@@ -17,32 +17,42 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @PostMapping("/save")
+    @PostMapping("/customer/save")
     public ResponseEntity<?> addCustomer(@RequestBody CustomerDTO dto) {
         customerService.addCustomer(dto);
-        StandradResponse response = new StandradResponse(200, "Success", null);
+        StandradResponse response = new StandradResponse(200, "Successfully added", null);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody CustomerDTO dto) {
-
         customerService.login(dto);
-        StandradResponse response = new StandradResponse(200, "Success", null);
+        StandradResponse response = new StandradResponse(200, "Successfully Logged", null);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
-
     }
 
-    @GetMapping(path = "{nic}")
+    @GetMapping(path = "/customer/search/{nic}")
     public ResponseEntity<?> searchCustomer(@PathVariable String nic) {
         CustomerDTO custDetailDTO = customerService.searchCustDetail(nic);
         return new ResponseEntity<>(new StandradResponse(200, "Success", custDetailDTO), HttpStatus.OK);
     }
 
-    @GetMapping("/view-cust")
+    @GetMapping("/customer/view-cust")
     public ResponseEntity<?> allCustDetails() {
         List<CustomerDTO> allCustomerDetails = customerService.getAllCustDet();
         return new ResponseEntity<>(new StandradResponse(200, "Success", allCustomerDetails), HttpStatus.OK);
+    }
+
+    @PutMapping("/customer/update-cust")
+    public ResponseEntity<?> updateCustdetail(@RequestBody CustomerDTO dto) {
+        customerService.updateCustdetail(dto);
+        return new ResponseEntity<>(new StandradResponse(200, "Success", null), HttpStatus.OK);
+    }
+
+    @DeleteMapping( "/customer/{nic}")
+    public ResponseEntity<?> deleteCustomerDetail(@PathVariable String nic) {
+        customerService.deleteCustomerDetail(nic);
+        return new ResponseEntity<>(new StandradResponse(200, "Success", null), HttpStatus.CREATED);
     }
 
 
