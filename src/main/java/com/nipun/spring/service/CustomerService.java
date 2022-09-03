@@ -9,6 +9,9 @@ public interface CustomerService {
      void login(CustomerDTO dto);
      CustomerDTO searchCustDetail(String nic);
      List<CustomerDTO> getAllCustDet();
+     void updateCustdetail(CustomerDTO dto);
+     void deleteCustomerDetail(String nic);
+
 }
 
 

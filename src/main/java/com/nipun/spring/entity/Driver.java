@@ -11,15 +11,15 @@ import javax.persistence.Id;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer {
+
+public class Driver {
     @Id
-//    private String id;
-    private String customer_id;
-    private String nic;
+    private String driver_id;
     private String first_name;
-    private String last_name;
-    private String email;
+    private String last_name ;
     private String contact_number;
-    private String addressLine_01 ;
-    private String password;
+    private String branch_id;
+    private String vehicle_id;
+    private String nic;
+
 }
