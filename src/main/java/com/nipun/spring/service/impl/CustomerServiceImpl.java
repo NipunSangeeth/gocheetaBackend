@@ -32,6 +32,12 @@ public class CustomerServiceImpl implements CustomerService {
             throw new RuntimeException("Customer Already exist..!");
         }
     }
+
+    @Override
+    public void login(CustomerDTO dto) {
+
+    }
+
     @Override
     public CustomerDTO searchCustDetail(String nic) {
         Optional<Customer> customerDetail = repo.findById(nic);
@@ -47,6 +53,26 @@ public class CustomerServiceImpl implements CustomerService {
         List<Customer> all = repo.findAll();
         return mapper.map(all, new TypeToken<List<CustomerDTO>>() {
         }.getType());
+    }
+
+    @Override
+    public void updateCustdetail(CustomerDTO dto) {
+        if (repo.existsById(dto.getNic())) {
+            Customer c = mapper.map(dto, Customer.class);
+            repo.save(c);
+        } else {
+            throw new RuntimeException("Invalid Update..!");
+        }
+    }
+
+    @Override
+    public void deleteCustomerDetail(String nic) {
+        if (repo.existsById(nic)) {
+            repo.deleteById(nic);
+        } else {
+            throw new RuntimeException("No customer for delete ID: " + nic);
+        }
+
     }
 
 }
