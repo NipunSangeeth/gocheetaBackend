@@ -13,12 +13,13 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Customer {
     @Id
+//    private String id;
+    private String customer_id;
     private String nic;
-    private String f_name;
-    private String l_name;
-    private String  phone_no;
-    private String street ;
-    private String city;
-    private String code ;
-
+    private String first_name;
+    private String last_name;
+    private String email;
+    private String contact_number;
+    private String addressLine_01 ;
+    private String password;
 }
