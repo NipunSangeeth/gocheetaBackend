@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class User {
     @Id
-//    private String id;
+    private String user_id;
     private String nic;
     private String first_name;
     private String last_name;

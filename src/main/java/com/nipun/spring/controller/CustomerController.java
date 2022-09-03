@@ -46,13 +46,13 @@ public class CustomerController {
     @PutMapping("/customer/update-cust")
     public ResponseEntity<?> updateCustdetail(@RequestBody CustomerDTO dto) {
         customerService.updateCustdetail(dto);
-        return new ResponseEntity<>(new StandradResponse(200, "Success", null), HttpStatus.OK);
+        return new ResponseEntity<>(new StandradResponse(200, "Customer Successfully Updated", null), HttpStatus.OK);
     }
 
     @DeleteMapping( "/customer/{nic}")
     public ResponseEntity<?> deleteCustomerDetail(@PathVariable String nic) {
         customerService.deleteCustomerDetail(nic);
-        return new ResponseEntity<>(new StandradResponse(200, "Success", null), HttpStatus.CREATED);
+        return new ResponseEntity<>(new StandradResponse(200, "Customer Successfully Deleted", null), HttpStatus.CREATED);
     }
 
 
