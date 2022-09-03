@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerDTO {
-    private String customer_id;
+public class UserDTO {
+    private String user_id;
     private String nic;
     private String first_name;
     private String last_name;
@@ -16,5 +16,5 @@ public class CustomerDTO {
     private String contact_number;
     private String addressLine_01 ;
     private String password;
-
+    private String type;
 }
