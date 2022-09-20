@@ -33,8 +33,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void login(UserDTO dto) {
-
+    public boolean login(String username, String password) {
+        if(repo.existsByNic(username)){
+            User user = repo.findByNic(username);
+            if(user.getPassword().equals(password)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
@@ -47,6 +57,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+
     @Override
     public List<UserDTO> getAllUsers() {
         List<User> all = repo.findAll();
@@ -56,7 +67,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUserdetail(UserDTO dto) {
-        if (repo.existsById(dto.getNic())) {
+        if (repo.existsById(dto.getUser_id())) {
             User c = mapper.map(dto, User.class);
             repo.save(c);
         } else {

@@ -16,4 +16,6 @@ public class DriverDTO {
     private String branch_id;
     private String vehicle_id;
     private String nic;
+    private String password;
+
 }

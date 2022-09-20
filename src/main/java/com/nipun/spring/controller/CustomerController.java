@@ -24,11 +24,10 @@ public class CustomerController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody CustomerDTO dto) {
-        customerService.login(dto);
-        StandradResponse response = new StandradResponse(200, "Successfully Logged", null);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    @PostMapping("/customer/login")
+    public ResponseEntity<?> login(@RequestParam("username") String username, @RequestParam("password") String password) {
+        boolean isLoged = customerService.login(username,password);
+        return new ResponseEntity<>(isLoged, HttpStatus.OK);
     }
 
     @GetMapping(path = "/customer/search/{nic}")

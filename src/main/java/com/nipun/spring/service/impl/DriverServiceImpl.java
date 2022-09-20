@@ -39,6 +39,21 @@ public class DriverServiceImpl implements DriverService {
         }
     }
 
+    @Override
+    public boolean login(String username, String password) {
+        if(repo.existsByNic(username)){
+            Driver d = repo.findByNic(username);
+            if(d.getPassword().equals(password)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+    }
+
     public DriverDTO searchDriverDetail(String driver_id) {
         Optional<Driver> driverDetail = repo.findById(driver_id);
         if (driverDetail.isPresent()) {

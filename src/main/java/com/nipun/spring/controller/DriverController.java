@@ -30,6 +30,13 @@ public class DriverController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    @PostMapping("/driver/login")
+    public ResponseEntity<?> login(@RequestParam("username") String username, @RequestParam("password") String password) {
+        boolean isLoged = driverService.login(username,password);
+        return new ResponseEntity<>(isLoged, HttpStatus.OK);
+    }
+
+
     @GetMapping(path = "/driver/search/{driver_id}")
     public ResponseEntity<?> searchDriver(@PathVariable String driver_id) {
         DriverDTO driverDetailDTO = driverService.searchDriverDetail(driver_id);

@@ -11,5 +11,6 @@ public interface DriverService {
     void updateDriverdetail(DriverDTO dto);
     void deleteDriver(String driver_id);
     List<DriverDTO> getallDriverList();
+    boolean login(String username, String password);
 
 }

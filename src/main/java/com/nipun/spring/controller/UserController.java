@@ -24,12 +24,11 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-//    @PostMapping("/login")
-//    public ResponseEntity<?> login(@RequestBody UserDTO dto) {
-//        userservice.login(dto);
-//        StandradResponse response = new StandradResponse(200, "Successfully Logged", null);
-//        return new ResponseEntity<>(response, HttpStatus.CREATED);
-//    }
+    @PostMapping("/admin/login")
+    public ResponseEntity<?> login(@RequestParam("username") String username, @RequestParam("password") String password) {
+        boolean isLoged = userservice.login(username,password);
+        return new ResponseEntity<>(isLoged, HttpStatus.OK);
+    }
 
     @GetMapping(path = "/user/search/{nic}")
     public ResponseEntity<?> searchCustomer(@PathVariable String nic) {

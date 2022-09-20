@@ -12,6 +12,7 @@ public class VehicleDTO {
     private String vehicle_id;
     private String vehicle_name;
     private String vehicle_number ;
+    private String vehicle_price;
     private String vehicle_cat;
     private String driver_id;
     private String branch_id;

@@ -2,6 +2,7 @@ package com.nipun.spring.service.impl;
 
 import com.nipun.spring.dto.CustomerDTO;
 import com.nipun.spring.entity.Customer;
+import com.nipun.spring.entity.User;
 import com.nipun.spring.repo.CustomerRepo;
 import com.nipun.spring.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +35,18 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void login(CustomerDTO dto) {
-
+    public boolean login(String username, String password) {
+        if(repo.existsByNic(username)){
+            Customer c = repo.findByNic(username);
+            if(c.getPassword().equals(password)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
